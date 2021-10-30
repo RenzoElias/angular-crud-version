@@ -49,7 +49,6 @@ export class AgregarComponent implements OnInit {
   ngOnInit(): void {
 
     if( !this.router.url.includes('editar') ) {
-      console.log('NO HAY RUTA EDITAR')
       return;
     }
 
@@ -58,9 +57,6 @@ export class AgregarComponent implements OnInit {
       switchMap( ({id}) => this.solicitudesService.getSolicitudPorId( id ) )
       )
       .subscribe( solicitud => this.solicitud = solicitud );
-
-
-    console.log('RESULT', this.solicitud);
   }
 
   guardar() {
@@ -70,15 +66,15 @@ export class AgregarComponent implements OnInit {
     }
 
     if ( this.solicitud.id ) {
-      // Actualizar
+      // NOTE: Actualizar
       this.solicitudesService.actualizarSolicitud( this.solicitud )
         .subscribe( solicitud => this.mostrarSnakbar('Registro actualizado'));
 
     } else {
-      // Crear
+      // NOTE: Crear
       this.solicitudesService.agregarSolicitud( this.solicitud )
         .subscribe( solicitud => {
-          this.router.navigate(['/heroes/editar', solicitud.id ]);
+          this.router.navigate(['/home/editar', solicitud.id ]);
           this.mostrarSnakbar('Registro creado');
         })
     }
@@ -98,7 +94,7 @@ export class AgregarComponent implements OnInit {
         if( result ) {
           this.solicitudesService.borrarSolicitud( this.solicitud.id! )
             .subscribe( resp => {
-              this.router.navigate(['/heroes']);
+              this.router.navigate(['/home']);
             });
         }
 

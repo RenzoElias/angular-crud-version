@@ -33,7 +33,7 @@ export class SolicitudComponent implements OnInit {
   }
 
   regresar() {
-    this.router.navigate(['/solicitudes/listado']);
+    this.router.navigate(['/home/listado']);
   }
 
 }

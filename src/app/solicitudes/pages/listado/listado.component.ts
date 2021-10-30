@@ -8,12 +8,14 @@ import { Solicitud } from '../../interfaces/solicitudes.interface';
 })
 export class ListadoComponent implements OnInit {
 
+  //TODO: INTERFACE QUE RECIBIRA DEL BACK
   solicitudes: Solicitud[] = [];
 
   constructor( private solicitudesService: SolicitudesService ) { }
 
   ngOnInit(): void {
 
+    // GUARDAR ARREGLO
     this.solicitudesService.getSolicitudes()
       .subscribe( solicitudes => this.solicitudes = solicitudes );
 

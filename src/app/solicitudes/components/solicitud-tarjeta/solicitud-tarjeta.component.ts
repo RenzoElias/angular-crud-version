@@ -12,6 +12,7 @@ import { Solicitud } from '../../interfaces/solicitudes.interface';
 })
 export class SolicitudTarjetaComponent{
 
+  // PROPS INPUT // SE LE PONE ( ! ) PARA QUE NO SE QUEJE DE NO ESTAR INICIALIZADO ESA VARIABLE
   @Input() solicitud!: Solicitud;
 
 }
