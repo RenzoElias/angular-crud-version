@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://fernando-herrera.com/api'
+  baseUrl: 'http://localhost:3001'
 };
 
 /*

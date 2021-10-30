@@ -4,10 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'home',
-  //   loadChildren: () => import('./heroes/heroes.module').then( m => m.HeroesModule )
-  // },
   {
     path: 'home',
     loadChildren: () => import('./solicitudes/solicitudes.module').then( m => m.SolicitudesModule )
@@ -19,7 +15,7 @@ const routes: Routes = [
   {
     path: '**',
     // component: ErrorPageComponent
-    redirectTo: 'home'
+    redirectTo: '404'
   }
 ]
 

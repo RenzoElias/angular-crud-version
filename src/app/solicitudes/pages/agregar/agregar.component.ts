@@ -22,12 +22,12 @@ export class AgregarComponent implements OnInit {
 
   publishers = [
     {
-      id: 'DC Comics',
-      desc: 'DC - Comics'
+      id: 'Nuevo Sistema',
+      desc: 'Nuevo Sistema'
     },
     {
-      id: 'Marvel Comics',
-      desc: 'Marvel - Comics'
+      id: 'Mejorar Sistema',
+      desc: 'Mejorar Sistema'
     },
   ];
 
@@ -49,15 +49,18 @@ export class AgregarComponent implements OnInit {
   ngOnInit(): void {
 
     if( !this.router.url.includes('editar') ) {
+      console.log('NO HAY RUTA EDITAR')
       return;
     }
 
     this.activatedRoute.params
-      .pipe(
-        switchMap( ({id}) => this.solicitudesService.getSolicitudPorId( id ) )
+    .pipe(
+      switchMap( ({id}) => this.solicitudesService.getSolicitudPorId( id ) )
       )
       .subscribe( solicitud => this.solicitud = solicitud );
 
+
+    console.log('RESULT', this.solicitud);
   }
 
   guardar() {

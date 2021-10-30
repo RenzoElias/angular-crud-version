@@ -1,7 +1,7 @@
 
 <h1>
-    {{ ( solicitud.id )? 'Editar' : 'Nuevo' }}
-    Héroe
+    {{ ( solicitud.id )? 'Editar' : 'Nueva' }}
+    Solicitud
     <small>{{ solicitud.superhero }}</small>
 </h1>
 
@@ -15,7 +15,7 @@
              fxLayout.xs="column"
              fxLayoutGap="20px">
             <mat-form-field fxFlex="100" fxLayout.xs="column" >
-                <mat-label>Super Héroe</mat-label>
+                <mat-label>Area</mat-label>
                 <input matInput
                        type="text"
                        [(ngModel)]="solicitud.superhero"
@@ -23,7 +23,7 @@
             </mat-form-field>
 
             <mat-form-field fxFlex="100">
-                <mat-label>Alter Ego</mat-label>
+                <mat-label>Cargo</mat-label>
                 <input matInput
                        type="text"
                        [(ngModel)]="solicitud.alter_ego"
@@ -33,7 +33,7 @@
 
 
         <mat-form-field>
-            <mat-label>Primera Aparición</mat-label>
+            <mat-label>Nombre</mat-label>
             <input matInput
                    type="text"
                    [(ngModel)]="solicitud.first_appearance"
@@ -41,7 +41,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Personajes</mat-label>
+            <mat-label>Area Destino</mat-label>
             <input matInput
                    type="text"
                    [(ngModel)]="solicitud.characters"
@@ -49,7 +49,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Creador</mat-label>
+            <mat-label>Tipo de Solicitud</mat-label>
             <mat-select [(ngModel)]="solicitud.publisher"
                         required>
                 <mat-option *ngFor="let publisher of publishers"
@@ -60,7 +60,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Foto Url</mat-label>
+            <mat-label>Descripcion de solicitud-Url</mat-label>
             <input matInput
                    type="url"
                    [(ngModel)]="solicitud.alt_img"
@@ -92,7 +92,7 @@
 
     </div>
 
-    <div fxFlex="50">
+    <div fxFlex="20">
         <img [src]="solicitud | imagen">
     </div>
 
