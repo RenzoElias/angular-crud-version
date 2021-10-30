@@ -5,12 +5,12 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 const routes: Routes = [
   {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule )
+    path: 'home',
+    loadChildren: () => import('./heroes/heroes.module').then( m => m.HeroesModule )
   },
   {
-    path: 'heroes',
-    loadChildren: () => import('./heroes/heroes.module').then( m => m.HeroesModule )
+    path: 'home1',
+    loadChildren: () => import('./solicitudes/solicitudes.module').then( m => m.SolicitudesModule )
   },
   {
     path: '404',
@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: '**',
     // component: ErrorPageComponent
-    redirectTo: '404'
+    redirectTo: 'home'
   }
 ]
 
