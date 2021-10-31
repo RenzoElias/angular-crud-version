@@ -36,7 +36,7 @@ export class AgregarComponent implements OnInit {
     alter_ego: '',
     characters: '',
     first_appearance: '',
-    publisher: Publisher.DCComics,
+    publisher: Publisher.NuevoSistema,
     alt_img: '',
   }
 
@@ -48,10 +48,12 @@ export class AgregarComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // Si no incluye la URL  ( /editar )
     if( !this.router.url.includes('editar') ) {
       return;
     }
 
+    // Extraer el parametro PARAMS ( /:id ) // Get One API
     this.activatedRoute.params
     .pipe(
       switchMap( ({id}) => this.solicitudesService.getSolicitudPorId( id ) )
@@ -66,12 +68,12 @@ export class AgregarComponent implements OnInit {
     }
 
     if ( this.solicitud.id ) {
-      // NOTE: Actualizar
+      // NOTE: Actualizar API
       this.solicitudesService.actualizarSolicitud( this.solicitud )
         .subscribe( solicitud => this.mostrarSnakbar('Registro actualizado'));
 
     } else {
-      // NOTE: Crear
+      // NOTE: Crear API
       this.solicitudesService.agregarSolicitud( this.solicitud )
         .subscribe( solicitud => {
           this.router.navigate(['/home/editar', solicitud.id ]);
@@ -90,7 +92,8 @@ export class AgregarComponent implements OnInit {
 
     dialog.afterClosed().subscribe(
       (result) => {
-
+        // Si presionas opcion borrar del dialog, el result ( Sera "true" )
+        // BORRAR API
         if( result ) {
           this.solicitudesService.borrarSolicitud( this.solicitud.id! )
             .subscribe( resp => {
@@ -104,7 +107,7 @@ export class AgregarComponent implements OnInit {
 
   mostrarSnakbar( mensaje: string ) {
 
-    this.snackBar.open( mensaje, 'ok!', {
+    this.snackBar.open( mensaje, 'OK!', {
       duration: 2500
     });
 

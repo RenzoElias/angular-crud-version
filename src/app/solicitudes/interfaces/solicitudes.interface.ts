@@ -9,6 +9,6 @@ export interface Solicitud {
 }
 
 export enum Publisher {
-    DCComics = "DC Comics",
-    MarvelComics = "Marvel Comics",
+    NuevoSistema = "Nuevo Sistema",
+    MejorarSistema = "Mejorar Sistema",
 }

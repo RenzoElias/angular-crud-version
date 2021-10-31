@@ -2,14 +2,14 @@
 <h1>
     {{ ( solicitud.id )? 'Editar' : 'Nueva' }}
     Solicitud
-    <small>{{ solicitud.superhero }}</small>
+    <!-- <small>{{ solicitud.superhero }}</small> -->
 </h1>
 
 <div fxLayout="row"
      fxLayoutGap="40px"
      fxLayout.xs="column">
 
-    <div fxFlex="50" fxLayout="column">
+    <div fxFlex="60" fxLayout="column">
 
         <div fxLayout="row"
              fxLayout.xs="column"
@@ -60,11 +60,16 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Descripcion de solicitud-Url</mat-label>
-            <input matInput
-                   type="url"
+            <mat-label>Descripcion de solicitud</mat-label>
+            <textarea matInput
+                   type="text"
                    [(ngModel)]="solicitud.alt_img"
                    required>
+            </textarea>
+            <!-- <input matInput
+                   type="text"
+                   [(ngModel)]="solicitud.alt_img"
+                   required> -->
         </mat-form-field>
 
         <br>
@@ -93,7 +98,7 @@
     </div>
 
     <div fxFlex="20">
-        <img [src]="solicitud | imagen">
+        <!-- <img [src]="solicitud | imagen"> -->
     </div>
 
 </div>

@@ -34,12 +34,16 @@ export class BuscarComponent implements OnInit {
       this.solicitudSeleccionado = undefined;
       return;
     }
+    console.warn(event.option.value);
 
     const solicitud: Solicitud = event.option.value;
+    // Busqueda por SuperHero
     this.termino = solicitud.superhero;
 
     this.solicitudesService.getSolicitudPorId( solicitud.id! )
-      .subscribe( solicitud => this.solicitudSeleccionado = solicitud );
+      .subscribe( solicitud => {
+        this.solicitudSeleccionado = solicitud;
+       } );
   }
 
 }
