@@ -4,8 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
-import { Solicitud, Publisher } from '../../interfaces/solicitudes.interface';
-import { SolicitudesService } from '../../services/solicitudes.service';
+import { Requerimiento, Publisher } from '../../interfaces/requerimientos.interface';
+import { RequerimientosService } from '../../services/requerimientos.service';
 import { ConfirmarComponent } from '../../components/confirmar/confirmar.component';
 
 @Component({
@@ -31,7 +31,7 @@ export class AgregarComponent implements OnInit {
     },
   ];
 
-  solicitud: Solicitud = {
+  requerimiento: Requerimiento = {
     superhero: '',
     alter_ego: '',
     characters: '',
@@ -40,7 +40,7 @@ export class AgregarComponent implements OnInit {
     alt_img: '',
   }
 
-  constructor( private solicitudesService: SolicitudesService,
+  constructor( private requerimientosService: RequerimientosService,
                private activatedRoute: ActivatedRoute,
                private router: Router,
                private snackBar: MatSnackBar,
@@ -56,38 +56,38 @@ export class AgregarComponent implements OnInit {
     // Extraer el parametro PARAMS ( /:id ) // Get One API
     this.activatedRoute.params
     .pipe(
-      switchMap( ({id}) => this.solicitudesService.getSolicitudPorId( id ) )
+      switchMap( ({id}) => this.requerimientosService.getRequerimientoPorId( id ) )
       )
-      .subscribe( solicitud => this.solicitud = solicitud );
+      .subscribe( requerimiento => this.requerimiento = requerimiento );
   }
 
   guardar() {
 
-    if( this.solicitud.superhero.trim().length === 0  ) {
+    if( this.requerimiento.superhero.trim().length === 0  ) {
       return;
     }
 
-    if ( this.solicitud.id ) {
+    if ( this.requerimiento.id ) {
       // NOTE: Actualizar API
-      this.solicitudesService.actualizarSolicitud( this.solicitud )
-        .subscribe( solicitud => this.mostrarSnakbar('Registro actualizado'));
+      this.requerimientosService.actualizarRequerimiento( this.requerimiento )
+        .subscribe( requerimiento => this.mostrarSnakbar('Registro actualizado'));
 
     } else {
       // NOTE: Crear API
-      this.solicitudesService.agregarSolicitud( this.solicitud )
-        .subscribe( solicitud => {
-          this.router.navigate(['/home/editar', solicitud.id ]);
+      this.requerimientosService.agregarRequerimiento( this.requerimiento )
+        .subscribe( requerimiento => {
+          this.router.navigate(['/inicio/editar', requerimiento.id ]);
           this.mostrarSnakbar('Registro creado');
         })
     }
 
   }
 
-  borrarSolicitud() {
+  borrarRequerimiento() {
 
     const dialog = this.dialog.open( ConfirmarComponent, {
       width: '250px',
-      data: this.solicitud
+      data: this.requerimiento
     });
 
     dialog.afterClosed().subscribe(
@@ -95,9 +95,9 @@ export class AgregarComponent implements OnInit {
         // Si presionas opcion borrar del dialog, el result ( Sera "true" )
         // BORRAR API
         if( result ) {
-          this.solicitudesService.borrarSolicitud( this.solicitud.id! )
+          this.requerimientosService.borrarRequerimiento( this.requerimiento.id! )
             .subscribe( resp => {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/inicio']);
             });
         }
 

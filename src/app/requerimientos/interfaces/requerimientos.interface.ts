@@ -1,4 +1,4 @@
-export interface Solicitud {
+export interface Requerimiento {
     id?:              string;
     superhero:        string;
     publisher:        Publisher;

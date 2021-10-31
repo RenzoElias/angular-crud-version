@@ -5,8 +5,8 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./solicitudes/solicitudes.module').then( m => m.SolicitudesModule )
+    path: 'inicio',
+    loadChildren: () => import('./requerimientos/requerimientos.module').then( m => m.RequerimientosModule )
   },
   {
     path: '404',
@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: '**',
     // component: ErrorPageComponent
-    redirectTo: 'home'
+    redirectTo: 'inicio'
   }
 ]
 

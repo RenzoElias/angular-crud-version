@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { Solicitud } from '../../interfaces/solicitudes.interface';
+import { Requerimiento } from '../../interfaces/requerimientos.interface';
 
 @Component({
   selector: 'app-confirmar',
@@ -12,7 +12,7 @@ import { Solicitud } from '../../interfaces/solicitudes.interface';
 export class ConfirmarComponent implements OnInit {
 
   constructor( private dialogRef: MatDialogRef<ConfirmarComponent>,
-               @Inject(MAT_DIALOG_DATA) public data: Solicitud ) { }
+               @Inject(MAT_DIALOG_DATA) public data: Requerimiento ) { }
 
   ngOnInit(): void {
   }

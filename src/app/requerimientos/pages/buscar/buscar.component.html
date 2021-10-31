@@ -2,7 +2,7 @@
 
 <div fxLayout="column">
     <div>
-        <h1>Buscador de Solicitudes</h1>
+        <h1>Buscador de Requerimientos</h1>
         <mat-divider></mat-divider>
     </div>
 
@@ -22,11 +22,11 @@
                               #auto="matAutocomplete"
                               (optionSelected)="opcionSeleccionada( $event )">
 
-              <mat-option *ngFor="let solicitud of solicitudes" [value]="solicitud">
-                {{ solicitud.first_appearance }}
+              <mat-option *ngFor="let requerimiento of requerimientos" [value]="requerimiento">
+                {{ requerimiento.first_appearance }}
               </mat-option>
 
-              <mat-option value="" *ngIf="solicitudes.length === 0 && termino.trim().length > 0">
+              <mat-option value="" *ngIf="requerimientos.length === 0 && termino.trim().length > 0">
                 No se encontró nada con el término {{ termino }}
               </mat-option>
 
@@ -40,8 +40,8 @@
 
     </div>
 
-    <div *ngIf="solicitudSeleccionado">
-      <app-solicitud-tarjeta [solicitud]="solicitudSeleccionado"></app-solicitud-tarjeta>
+    <div *ngIf="requerimientoSeleccionado">
+      <app-requerimiento-tarjeta [requerimiento]="requerimientoSeleccionado"></app-requerimiento-tarjeta>
     </div>
 
 </div>

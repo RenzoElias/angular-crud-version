@@ -1,0 +1,33 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> {{requerimiento.superhero }} </mat-card-title>
+        <mat-card-subtitle> {{requerimiento.alter_ego }} </mat-card-subtitle>
+    </mat-card-header>
+
+    <!-- <img mat-card-image [src]=requerimiento | imagen"> -->
+
+    <mat-card-content>
+        <h3>{{requerimiento.publisher }}</h3>
+        <p>
+            <strong>Nombre: </strong> {{requerimiento.first_appearance }}
+            <br>
+            <strong>Area Destino: </strong> {{requerimiento.characters }}
+        </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button
+                color="warn"
+                [routerLink]="['/inicio',requerimiento.id ]">
+            Leer más...
+        </button>
+
+        <button mat-button
+                color="info"
+                [routerLink]="['/inicio/editar',requerimiento.id ]">
+            Editar
+        </button>
+    </mat-card-actions>
+
+</mat-card>

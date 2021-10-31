@@ -1,32 +1,32 @@
 
-<mat-grid-list cols="1" *ngIf="!solicitud; else divSolicitud">
+<mat-grid-list cols="1" *ngIf="!requerimiento; else divRequerimiento">
     <mat-grid-tile>
         <mat-spinner></mat-spinner>
     </mat-grid-tile>
 </mat-grid-list>
 
 
-<ng-template #divSolicitud>
+<ng-template #divRequerimiento>
 
     <div fxLayout="row"
          fxLayout.xs="column"
          fxLayoutGap="30px">
 
          <div fxFlex="50">
-             <h1>{{ solicitud.superhero }} <small> -  {{ solicitud.alter_ego }} </small> </h1>
+             <h1>{{ requerimiento.superhero }} <small> -  {{ requerimiento.alter_ego }} </small> </h1>
              <mat-divider></mat-divider>
              <br>
-             <h2>Tipo de Solicitud: {{ solicitud.publisher }}</h2>
+             <h2>Tipo de Requerimiento: {{ requerimiento.publisher }}</h2>
              <mat-divider></mat-divider>
              <mat-list>
                  <h3>Nombre:</h3>
-                 <mat-list-item> {{ solicitud.first_appearance }} </mat-list-item>
+                 <mat-list-item> {{ requerimiento.first_appearance }} </mat-list-item>
                  <h3>Area Destino:</h3>
-                 <mat-list-item> {{ solicitud.characters }} </mat-list-item>
+                 <mat-list-item> {{ requerimiento.characters }} </mat-list-item>
                  <h3>Cargo:</h3>
-                 <mat-list-item> {{ solicitud.alter_ego }} </mat-list-item>
-                 <h3>Descripcion de solicitud:</h3>
-                 <mat-list-item> {{ solicitud.alt_img }} </mat-list-item>
+                 <mat-list-item> {{ requerimiento.alter_ego }} </mat-list-item>
+                 <h3>Descripcion de requerimiento:</h3>
+                 <mat-list-item> {{ requerimiento.alt_img }} </mat-list-item>
              </mat-list>
              <br>
              <br>
@@ -35,7 +35,6 @@
                      (click)="regresar()">
                  Regresar
              </button>
-             <!-- <img [src]="solicitud | imagen"> -->
          </div>
 
     </div>

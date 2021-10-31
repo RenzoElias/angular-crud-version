@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 
-import { SolicitudesRoutingModule } from './solicitudes-routing.module';
+import { RequerimientosRoutingModule } from './requerimientos-routing.module';
 import { MaterialModule } from '../material/material.module';
 
 import { AgregarComponent } from './pages/agregar/agregar.component';
 import { BuscarComponent } from './pages/buscar/buscar.component';
-import { HomeComponent } from './pages/home/home.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
 import { ListadoComponent } from './pages/listado/listado.component';
-import { SolicitudTarjetaComponent } from './components/solicitud-tarjeta/solicitud-tarjeta.component';
+import { RequerimientoTarjetaComponent } from './components/requerimiento-tarjeta/requerimiento-tarjeta.component';
 import { ImagenPipe } from './pipes/imagen.pipe';
 import { ConfirmarComponent } from './components/confirmar/confirmar.component';
-import { SolicitudComponent } from './pages/solicitud/solicitud.component';
+import { RequerimientoComponent } from './pages/requerimiento/requerimiento.component';
 
 
 
@@ -21,10 +21,10 @@ import { SolicitudComponent } from './pages/solicitud/solicitud.component';
   declarations: [
     AgregarComponent,
     BuscarComponent,
-    SolicitudComponent,
-    HomeComponent,
+    RequerimientoComponent,
+    InicioComponent,
     ListadoComponent,
-    SolicitudTarjetaComponent,
+    RequerimientoTarjetaComponent,
     ImagenPipe,
     ConfirmarComponent
   ],
@@ -33,7 +33,7 @@ import { SolicitudComponent } from './pages/solicitud/solicitud.component';
     FlexLayoutModule,
     FormsModule,
     MaterialModule,
-    SolicitudesRoutingModule
+    RequerimientosRoutingModule
   ]
 })
-export class SolicitudesModule { }
+export class RequerimientosModule { }
