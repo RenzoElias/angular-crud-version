@@ -59,17 +59,6 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Tipo de SendSolicitud</mat-label>
-            <mat-select [(ngModel)]="sendSolicitud.tipo"
-                        required>
-                <mat-option *ngFor="let reqTipoSolicitud of reqTipoSolicitudes"
-                            [value]="reqTipoSolicitud.idParam">
-                    {{ reqTipoSolicitud.name }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
             <mat-label>Descripcion de solicitud</mat-label>
             <textarea matInput
                    type="text"

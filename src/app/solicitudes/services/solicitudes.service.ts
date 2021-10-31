@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Solicitud } from '../interfaces/solicitudes.interface';
+import { Solicitud, ResponseI } from '../interfaces/solicitudes.interface';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -22,6 +22,11 @@ export class SolicitudesService {
   // OBTENER UNO
   getSolicitudPorId( id: string ):Observable<Solicitud> {
     return this.http.get<Solicitud>(`${ this.baseUrl }/api/${ id }`);
+  }
+
+  // OBTENER TODO TIPO DE SOLICITUD
+  getAllTipoSolicitud():Observable<ResponseI> {
+    return this.http.get<ResponseI>(`http://192.168.1.4:1991/api/solicitud/parametros/find-all?idParametrosTipo=5`);
   }
 
   // AGREGAR UNA SOLICITUD

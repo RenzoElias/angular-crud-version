@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
-import { Solicitud, Publisher, SendSolicitud, ResponseI, ReqTipoSolicitud } from '../../interfaces/solicitudes.interface';
+import { Solicitud, Publisher } from '../../interfaces/solicitudes.interface';
 import { SolicitudesService } from '../../services/solicitudes.service';
 import { ConfirmarComponent } from '../../components/confirmar/confirmar.component';
 
@@ -40,17 +40,6 @@ export class AgregarComponent implements OnInit {
     descripcion: '',
   }
 
-  sendSolicitud: SendSolicitud = {
-    area: '',
-    area_cargo: '',
-    area_destino: '',
-    nombre: '',
-    tipo: 20,
-    descripcion: '',
-  }
-
-  reqTipoSolicitudes: ReqTipoSolicitud[] = [];
-
   constructor( private solicitudesService: SolicitudesService,
                private activatedRoute: ActivatedRoute,
                private router: Router,
@@ -59,16 +48,7 @@ export class AgregarComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    this.solicitudesService.getAllTipoSolicitud()
-      .subscribe((data: any) => {
-        const {result} = data;
-        this.reqTipoSolicitudes = result;
-      });
-      // .subscribe( solicitudes => this.solicitudes = solicitudes );
-
-
-    // Si no incluye la URL  ( /editar ), no extraera por el id, por ende no seteara el interface (solicitud)
+    // Si no incluye la URL  ( /editar )
     if( !this.router.url.includes('editar') ) {
       return;
     }
@@ -88,18 +68,12 @@ export class AgregarComponent implements OnInit {
     }
 
     if ( this.solicitud.id ) {
-      // NOTE: Actualizar Editar API
-      console.log("solicitud", this.solicitud);
-      console.log("sendSolicitud", this.sendSolicitud);
-
+      // NOTE: Actualizar API
       this.solicitudesService.actualizarSolicitud( this.solicitud )
         .subscribe( solicitud => this.mostrarSnakbar('Registro actualizado'));
 
     } else {
       // NOTE: Crear API
-      console.log("solicitud", this.solicitud);
-      console.log("sendSolicitud", this.sendSolicitud);
-
       this.solicitudesService.agregarSolicitud( this.solicitud )
         .subscribe( solicitud => {
           this.router.navigate(['/home/editar', solicitud.id ]);
