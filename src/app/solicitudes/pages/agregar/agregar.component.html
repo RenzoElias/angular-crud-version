@@ -2,7 +2,6 @@
 <h1>
     {{ ( solicitud.id )? 'Editar' : 'Nueva' }}
     Solicitud
-    <!-- <small>{{ solicitud.superhero }}</small> -->
 </h1>
 
 <div fxLayout="row"
@@ -66,10 +65,6 @@
                    [(ngModel)]="solicitud.alt_img"
                    required>
             </textarea>
-            <!-- <input matInput
-                   type="text"
-                   [(ngModel)]="solicitud.alt_img"
-                   required> -->
         </mat-form-field>
 
         <br>

@@ -22,7 +22,7 @@ export class BuscarComponent implements OnInit {
 
 
   buscando() {
-
+    // OBTENER SUGERENCIAS - API
     this.solicitudesService.getSugerencias( this.termino.trim() )
       .subscribe( solicitudes => this.solicitudes = solicitudes );
 
@@ -40,8 +40,9 @@ export class BuscarComponent implements OnInit {
     // Busqueda por SuperHero
     this.termino = solicitud.superhero;
 
+    // OBTENER UNO - API
     this.solicitudesService.getSolicitudPorId( solicitud.id! )
-      .subscribe( solicitud => {
+      .subscribe( solicitud => { // USA INTERFACE SOLICITUD
         this.solicitudSeleccionado = solicitud;
        } );
   }
