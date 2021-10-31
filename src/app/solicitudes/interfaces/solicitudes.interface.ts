@@ -1,11 +1,11 @@
 export interface Solicitud {
-    id?:              string;
-    superhero:        string;
-    publisher:        Publisher;
-    alter_ego:        string;
-    first_appearance: string;
-    characters:       string;
-    alt_img?:         string; // https://kasdfjaskdfajsdf.com/img.png
+    id?: string;
+    area: string;
+    tipo: Publisher;
+    area_cargo: string;
+    nombre: string;
+    area_destino: string;
+    descripcion?: string;
 }
 
 export enum Publisher {

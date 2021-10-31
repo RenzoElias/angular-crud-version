@@ -20,7 +20,7 @@ import { ConfirmarComponent } from '../../components/confirmar/confirmar.compone
 })
 export class AgregarComponent implements OnInit {
 
-  publishers = [
+  tipos = [
     {
       id: 'Nuevo Sistema',
       desc: 'Nuevo Sistema'
@@ -32,12 +32,12 @@ export class AgregarComponent implements OnInit {
   ];
 
   solicitud: Solicitud = {
-    superhero: '',
-    alter_ego: '',
-    characters: '',
-    first_appearance: '',
-    publisher: Publisher.NuevoSistema,
-    alt_img: '',
+    area: '',
+    area_cargo: '',
+    area_destino: '',
+    nombre: '',
+    tipo: Publisher.NuevoSistema,
+    descripcion: '',
   }
 
   constructor( private solicitudesService: SolicitudesService,
@@ -63,7 +63,7 @@ export class AgregarComponent implements OnInit {
 
   guardar() {
 
-    if( this.solicitud.superhero.trim().length === 0  ) {
+    if( this.solicitud.area.trim().length === 0  ) {
       return;
     }
 

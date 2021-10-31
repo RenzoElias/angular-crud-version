@@ -23,7 +23,7 @@
                               (optionSelected)="opcionSeleccionada( $event )">
 
               <mat-option *ngFor="let solicitud of solicitudes" [value]="solicitud">
-                {{ solicitud.first_appearance }}
+                {{ solicitud.nombre }}
               </mat-option>
 
               <mat-option value="" *ngIf="solicitudes.length === 0 && termino.trim().length > 0">

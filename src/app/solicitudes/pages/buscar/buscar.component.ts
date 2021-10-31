@@ -37,8 +37,8 @@ export class BuscarComponent implements OnInit {
     console.warn(event.option.value);
 
     const solicitud: Solicitud = event.option.value;
-    // Busqueda por SuperHero
-    this.termino = solicitud.first_appearance;
+    // Busqueda por area
+    this.termino = solicitud.nombre;
 
     // OBTENER UNO - API
     this.solicitudesService.getSolicitudPorId( solicitud.id! )

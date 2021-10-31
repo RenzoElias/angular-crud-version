@@ -13,20 +13,20 @@
          fxLayoutGap="30px">
 
          <div fxFlex="50">
-             <h1>{{ solicitud.superhero }} <small> -  {{ solicitud.alter_ego }} </small> </h1>
+             <h1>{{ solicitud.area }} <small> -  {{ solicitud.area_cargo }} </small> </h1>
              <mat-divider></mat-divider>
              <br>
-             <h2>Tipo de Solicitud: {{ solicitud.publisher }}</h2>
+             <h2>Tipo de Solicitud: {{ solicitud.tipo }}</h2>
              <mat-divider></mat-divider>
              <mat-list>
                  <h3>Nombre:</h3>
-                 <mat-list-item> {{ solicitud.first_appearance }} </mat-list-item>
+                 <mat-list-item> {{ solicitud.nombre }} </mat-list-item>
                  <h3>Area Destino:</h3>
-                 <mat-list-item> {{ solicitud.characters }} </mat-list-item>
+                 <mat-list-item> {{ solicitud.area_destino }} </mat-list-item>
                  <h3>Cargo:</h3>
-                 <mat-list-item> {{ solicitud.alter_ego }} </mat-list-item>
+                 <mat-list-item> {{ solicitud.area_cargo }} </mat-list-item>
                  <h3>Descripcion de solicitud:</h3>
-                 <mat-list-item> {{ solicitud.alt_img }} </mat-list-item>
+                 <mat-list-item> {{ solicitud.descripcion }} </mat-list-item>
              </mat-list>
              <br>
              <br>

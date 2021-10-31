@@ -1,18 +1,18 @@
 
 <mat-card>
     <mat-card-header>
-        <mat-card-title> {{ solicitud.superhero }} </mat-card-title>
-        <mat-card-subtitle> {{ solicitud.alter_ego }} </mat-card-subtitle>
+        <mat-card-title> {{ solicitud.area }} </mat-card-title>
+        <mat-card-subtitle> {{ solicitud.area_cargo }} </mat-card-subtitle>
     </mat-card-header>
 
     <!-- <img mat-card-image [src]="solicitud | imagen"> -->
 
     <mat-card-content>
-        <h3>{{ solicitud.publisher }}</h3>
+        <h3>{{ solicitud.tipo }}</h3>
         <p>
-            <strong>Nombre: </strong> {{ solicitud.first_appearance }}
+            <strong>Nombre: </strong> {{ solicitud.nombre }}
             <br>
-            <strong>Area Destino: </strong> {{ solicitud.characters }}
+            <strong>Area Destino: </strong> {{ solicitud.area_destino }}
         </p>
     </mat-card-content>
 

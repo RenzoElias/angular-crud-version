@@ -9,10 +9,10 @@ export class ImagenPipe implements PipeTransform {
 
   transform( solicitud: Solicitud ): string {
 
-    if( !solicitud.id && !solicitud.alt_img ) {
+    if( !solicitud.id && !solicitud.descripcion ) {
       return 'assets/no-image.png';
-    } else if ( solicitud.alt_img ) {
-      return solicitud.alt_img;
+    } else if ( solicitud.descripcion ) {
+      return solicitud.descripcion;
     } else {
       return `assets/solicitudes/${ solicitud.id }.jpg`;
     }
