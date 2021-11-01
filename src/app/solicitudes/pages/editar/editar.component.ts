@@ -112,6 +112,7 @@ export class EditarComponent implements OnInit {
         // BORRAR API
         if( result ) {
 
+          console.log('BOTON BORRAR');
           this.activatedRoute.params
           .pipe(
             switchMap( ({id}) => this.solicitudesService.borrarSolicitud( id ) )
