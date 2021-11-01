@@ -18,12 +18,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-toolbar {
     background: #dcdcdc;
     color: #000;
-    /* color: #fff; */
 }
 
 .mat-drawer.mat-drawer-push{
     background-color: #2e2e2e;
-    /* background-color: #0339A7; */
 }
 
 .mat-drawer-container {
