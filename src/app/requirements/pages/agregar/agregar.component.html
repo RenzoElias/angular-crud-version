@@ -1,0 +1,99 @@
+
+<h1>
+    Nuevo
+    Requerimiento
+</h1>
+
+<div fxLayout="row"
+     fxLayoutGap="40px"
+     fxLayout.xs="column">
+
+    <div fxFlex="60" fxLayout="column">
+        <div fxLayout="row"
+             fxLayout.xs="column"
+             fxLayoutGap="20px">
+            <mat-form-field fxFlex="100" fxLayout.xs="column" >
+                <mat-label>Area</mat-label>
+                <mat-select [(ngModel)]="sendCrearRequirement.id003AreaSolicitante"
+                disabled
+                >
+                <mat-option
+                            [value]="userRequirement.id003Area.idParam">
+                    {{ userRequirement.id003Area.name }}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="100">
+                <mat-label>Cargo</mat-label>
+                <input matInput
+                       type="text"
+                       [(ngModel)]="userRequirement.id002Cargo.name"
+                       disabled>
+            </mat-form-field>
+        </div>
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <mat-select [(ngModel)]="sendCrearRequirement.idUsuarioSolicitante"
+            disabled
+            >
+            <mat-option
+                        [value]="userRequirement.idPersona">
+                {{ userRequirement.nombres }} {{' '}}
+                {{ userRequirement.apePaterno }} {{' '}}
+                {{ userRequirement.apeMaterno }}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Area Destino</mat-label>
+            <mat-select [(ngModel)]="sendCrearRequirement.idUsuarioSolicitante"
+            disabled
+            >
+            <mat-option
+                        [value]="userRequirement.idPersona">
+                {{ 'COORDINADOR HELPDESK' }}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Tipo de Requirement</mat-label>
+            <mat-select [(ngModel)]="sendCrearRequirement.id005TipoRequirement"
+                        required>
+                <mat-option *ngFor="let reqTipoRequirement of reqTipoRequirements"
+                            [value]="reqTipoRequirement.idParam">
+                    {{ reqTipoRequirement.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Descripcion de requirement</mat-label>
+            <textarea matInput
+                   type="text"
+                   [(ngModel)]="sendCrearRequirement.descripcion"
+                   required>
+            </textarea>
+        </mat-form-field>
+
+        <br>
+
+
+        <div fxLayout>
+            <button mat-raised-button
+                    color=""
+                    (click)="save()">
+                <mat-icon>create</mat-icon>
+                Crear
+            </button>
+
+            <span class="spacer"></span>
+        </div>
+
+
+    </div>
+
+    <div fxFlex="20">
+    </div>
+
+</div>

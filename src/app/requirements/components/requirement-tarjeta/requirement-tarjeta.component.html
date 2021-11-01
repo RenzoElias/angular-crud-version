@@ -1,0 +1,31 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> {{ requirement.usuarioActual.nombreArea }} </mat-card-title>
+        <mat-card-subtitle> {{ requirement.usuarioActual.nombreCargo }} </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <h3>{{ requirement.id005TipoRequirement.name }}</h3>
+        <p>
+            <strong>Nombre: </strong> {{ requirement.usuarioActual.nombresCompletos }}
+            <br>
+            <strong>Area Destino: </strong> {{ requirement.usuarioDestino.nombreCargo }}
+        </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button
+                color="warn"
+                [routerLink]="['/home', requirement.idRequirement ]">
+            Detalle
+        </button>
+
+        <button mat-button
+                color="info"
+                [routerLink]="['/home/editar', requirement.idRequirement ]">
+            Modificar
+        </button>
+    </mat-card-actions>
+
+</mat-card>
