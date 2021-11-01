@@ -1,0 +1,45 @@
+
+<mat-grid-list cols="1" *ngIf="!requirement; else divRequirement">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+<ng-template #divRequirement>
+
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutGap="30px">
+
+         <div fxFlex="50">
+             <h1>{{ requirement.usuarioActual.nombreArea }} <small> -  {{ requirement.usuarioActual.nombreCargo }} </small> </h1>
+             <mat-divider></mat-divider>
+             <br>
+             <h2>Tipo de requerimiento: {{ requirement.id005TipoRequirement.name }}</h2>
+             <mat-divider></mat-divider>
+             <mat-list>
+                 <h3>Nombre:</h3>
+                 <mat-list-item> {{ requirement.usuarioActual.nombresCompletos }} </mat-list-item>
+                 <h3>Cargo:</h3>
+                 <mat-list-item> {{ requirement.usuarioDestino.nombreArea }} </mat-list-item>
+                 <h3>Area Destino:</h3>
+                 <mat-list-item> {{ requirement.usuarioDestino.nombreCargo }} </mat-list-item>
+                 <h3>Descripcion de requerimiento:</h3>
+                 <mat-list-item> {{ requirement.descripcion }} </mat-list-item>
+             </mat-list>
+             <br>
+             <br>
+             <button mat-button
+                     color="warn"
+                     (click)="regresar()">
+                 Regresar
+             </button>
+         </div>
+
+    </div>
+
+
+</ng-template>
+
+

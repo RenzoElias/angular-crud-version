@@ -1,9 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 .spacer {
     flex: 1 1 auto;
+}
+
+.widthLarge {
+    width: 100vw;
+}
+
+.titleGetAll{
+    text-align: start;
+    margin-left: 1.5rem !important;
+}
+
+.mat-toolbar {
+    background: #dcdcdc;
+    color: #000;
+    /* color: #fff; */
+}
+
+.mat-drawer.mat-drawer-push{
+    background-color: #2e2e2e;
+    /* background-color: #0339A7; */
+}
+
+.mat-drawer-container {
+    background-color: #fff;
+    color: #000;
+}
+
+.imagenLogo{
+    height: 45px;
+    border-radius: 10px;
+}
+
+@media (min-width: 992px) {
+    .container[_ngcontent-weg-c187]{
+        margin: 0px
+    }
 }

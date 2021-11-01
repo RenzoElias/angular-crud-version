@@ -1,0 +1,54 @@
+
+
+<mat-sidenav-container fullscreen>
+
+    <mat-sidenav #sidenav mode="push">
+
+        <mat-toolbar color="">
+            <img class="imagenLogo" src="../../../../assets/images/acerosArequipa.png" alt="">
+            <!-- <span>Menú</span> -->
+            <span class="spacer"></span>
+            <button mat-icon-button
+                    (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+            <a routerLink="./listado"
+               mat-list-item
+               (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>home</mat-icon>
+                <span>Inicio</span>
+            </a>
+
+            <a routerLink="./agregar"
+               mat-list-item
+               (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>add_circle_outline</mat-icon>
+                <span>Agregar Requerimiento</span>
+            </a>
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-toolbar>
+        <div class="d-flex align-items-center justify-content-between widthLarge">
+            <button mat-icon-button class="float-left"
+                    (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <span class="float-right">
+                Angular CRUD
+            </span>
+
+        </div>
+    </mat-toolbar>
+
+
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-sidenav-container>
