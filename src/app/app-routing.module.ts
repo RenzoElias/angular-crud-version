@@ -1,20 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ErrorPageComponent } from './shared/error-page/error-page.component';
-
 const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./solicitudes/solicitudes.module').then( m => m.SolicitudesModule )
   },
   {
-    path: '404',
-    component: ErrorPageComponent
-  },
-  {
     path: '**',
-    // component: ErrorPageComponent
     redirectTo: 'home'
   }
 ]
