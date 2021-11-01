@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { SolicitudesService } from '../../services/solicitudes.service';
-import { Solicitud } from '../../interfaces/solicitudes.interface';
+import { ListSolicitudes } from '../../interfaces/solicitudes.interface';
 
 @Component({
   selector: 'app-solicitud',
@@ -16,7 +16,7 @@ import { Solicitud } from '../../interfaces/solicitudes.interface';
 })
 export class SolicitudComponent implements OnInit {
 
-  solicitud!: Solicitud;
+  solicitud!: ListSolicitudes;
 
   constructor( private activatedRoute: ActivatedRoute,
                private solicitudesService: SolicitudesService,
@@ -28,8 +28,12 @@ export class SolicitudComponent implements OnInit {
       .pipe(
         switchMap( ({ id }) => this.solicitudesService.getSolicitudPorId(id) )
       )
-      .subscribe( solicitud => this.solicitud = solicitud );
+      .subscribe((data: any) => {
+        const {result} = data;
+        this.solicitud = result[0];
+      });
 
+      // .subscribe( solicitud => this.solicitud = solicitud );
   }
 
   regresar() {

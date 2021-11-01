@@ -4,13 +4,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
-import { SendCrearSolicitud, ResponseI, ReqTipoSolicitud, UserSolicitud, ListSolicitudes } from '../../interfaces/solicitudes.interface';
+import { SendEditarSolicitud, ResponseI, ReqTipoSolicitud, UserSolicitud, ListSolicitudes } from '../../interfaces/solicitudes.interface';
 import { SolicitudesService } from '../../services/solicitudes.service';
 import { ConfirmarComponent } from '../../components/confirmar/confirmar.component';
 
 @Component({
-  selector: 'app-agregar',
-  templateUrl: './agregar.component.html',
+  selector: 'app-editar',
+  templateUrl: './editar.component.html',
   styles: [`
     img {
       width: 100%;
@@ -18,24 +18,33 @@ import { ConfirmarComponent } from '../../components/confirmar/confirmar.compone
     }
   `]
 })
-export class AgregarComponent implements OnInit {
+export class EditarComponent implements OnInit {
+
+  solicitud!: ListSolicitudes;
+  reqTipoSolicitudes: ReqTipoSolicitud[] = [];
 
 
-  sendCrearSolicitud: SendCrearSolicitud = {
+  sendEditarSolicitud: SendEditarSolicitud = {
     descripcion: '',
     idUsuarioSolicitante: 3,
     id003AreaSolicitante: 8,
     id005TipoSolicitud: 18,
   }
+  // sendSolicitud: SendSolicitud = {
+  //   area: '',
+  //   area_cargo: '',
+  //   area_destino: '',
+  //   nombre: '',
+  //   tipo: 20,
+  //   descripcion: '',
+  // }
 
-  userSolicitud!: UserSolicitud;
-  reqTipoSolicitudes: ReqTipoSolicitud[] = [];
 
   constructor( private solicitudesService: SolicitudesService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router,
-              private snackBar: MatSnackBar,
-              public dialog: MatDialog ) { }
+               private activatedRoute: ActivatedRoute,
+               private router: Router,
+               private snackBar: MatSnackBar,
+               public dialog: MatDialog ) { }
 
   ngOnInit(): void {
 
@@ -45,20 +54,24 @@ export class AgregarComponent implements OnInit {
         this.reqTipoSolicitudes = result;
       });
 
-    this.solicitudesService.getUserSolicitudPorId(3)
+    if( !this.router.url.includes('editar') ) {
+      return;
+    }
+
+
+    this.activatedRoute.params
+    .pipe(
+      switchMap( ({id}) => this.solicitudesService.getSolicitudPorId( id ) )
+      )
       .subscribe((data: any) => {
         const {result} = data;
-        console.log();
+        console.warn('result',result[0]);
 
-        this.userSolicitud = result;
+        this.solicitud = result[0];
       });
-
   }
 
   guardar() {
-
-    console.warn("sendCrearSolicitud", this.sendCrearSolicitud);
-
 
     // if( this.solicitud.area.trim().length === 0  ) {
     //   return;
@@ -84,6 +97,38 @@ export class AgregarComponent implements OnInit {
     //     })
     // }
 
+  }
+
+  borrarSolicitud() {
+
+    const dialog = this.dialog.open( ConfirmarComponent, {
+      width: '250px',
+      data: this.solicitud
+    });
+
+    dialog.afterClosed().subscribe(
+      (result) => {
+        // Si presionas opcion borrar del dialog, el result ( Sera "true" )
+        // BORRAR API
+        if( result ) {
+
+          this.activatedRoute.params
+          .pipe(
+            switchMap( ({id}) => this.solicitudesService.borrarSolicitud( id ) )
+            )
+            .subscribe((resp) => {
+              console.log('Eliminado');
+              this.router.navigate(['/home']);
+            });
+
+          // this.solicitudesService.borrarSolicitud( this.solicitud.id! )
+          //   .subscribe( resp => {
+          //     this.router.navigate(['/home']);
+          //   });
+        }
+
+      }
+    )
   }
 
   mostrarSnakbar( mensaje: string ) {

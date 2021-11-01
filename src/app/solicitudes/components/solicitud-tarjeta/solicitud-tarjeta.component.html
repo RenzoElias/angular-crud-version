@@ -1,31 +1,31 @@
 
 <mat-card>
     <mat-card-header>
-        <mat-card-title> {{ solicitud.area }} </mat-card-title>
-        <mat-card-subtitle> {{ solicitud.area_cargo }} </mat-card-subtitle>
+        <mat-card-title> {{ solicitud.usuarioActual.nombreArea }} </mat-card-title>
+        <mat-card-subtitle> {{ solicitud.usuarioActual.nombreCargo }} </mat-card-subtitle>
     </mat-card-header>
 
     <!-- <img mat-card-image [src]="solicitud | imagen"> -->
 
     <mat-card-content>
-        <h3>{{ solicitud.tipo }}</h3>
+        <h3>{{ solicitud.id005TipoSolicitud.name }}</h3>
         <p>
-            <strong>Nombre: </strong> {{ solicitud.nombre }}
+            <strong>Nombre: </strong> {{ solicitud.usuarioActual.nombresCompletos }}
             <br>
-            <strong>Area Destino: </strong> {{ solicitud.area_destino }}
+            <strong>Area Destino: </strong> {{ solicitud.usuarioDestino.nombreCargo }}
         </p>
     </mat-card-content>
 
     <mat-card-actions>
         <button mat-button
                 color="warn"
-                [routerLink]="['/home', solicitud.id ]">
+                [routerLink]="['/home', solicitud.idSolicitud ]">
             Leer más...
         </button>
 
         <button mat-button
                 color="info"
-                [routerLink]="['/home/editar', solicitud.id ]">
+                [routerLink]="['/home/editar', solicitud.idSolicitud ]">
             Editar
         </button>
     </mat-card-actions>

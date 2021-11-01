@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Solicitud } from '../../interfaces/solicitudes.interface';
+import { ListSolicitudes } from '../../interfaces/solicitudes.interface';
 
 @Component({
   selector: 'app-solicitud-tarjeta',
@@ -13,6 +13,6 @@ import { Solicitud } from '../../interfaces/solicitudes.interface';
 export class SolicitudTarjetaComponent{
 
   // PROPS INPUT // SE LE PONE ( ! ) PARA QUE NO SE QUEJE DE NO ESTAR INICIALIZADO ESA VARIABLE
-  @Input() solicitud!: Solicitud;
+  @Input() solicitud!: ListSolicitudes;
 
 }

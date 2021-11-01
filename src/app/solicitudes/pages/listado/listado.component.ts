@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SolicitudesService } from '../../services/solicitudes.service';
-import { Solicitud } from '../../interfaces/solicitudes.interface';
+import { UserSolicitud, ListSolicitudes } from '../../interfaces/solicitudes.interface';
 
 @Component({
   selector: 'app-listado',
@@ -9,15 +9,30 @@ import { Solicitud } from '../../interfaces/solicitudes.interface';
 export class ListadoComponent implements OnInit {
 
   //TODO: INTERFACE QUE RECIBIRA DEL BACK
-  solicitudes: Solicitud[] = [];
+  solicitudes: ListSolicitudes[] = [];
+
+  // userSolicitud!: UserSolicitud;
 
   constructor( private solicitudesService: SolicitudesService ) { }
 
   ngOnInit(): void {
 
     // GUARDAR ARREGLO
-    this.solicitudesService.getSolicitudes()
-      .subscribe( solicitudes => this.solicitudes = solicitudes );
+    // this.solicitudesService.getSolicitudes()
+    //   .subscribe( solicitudes => this.solicitudes = solicitudes );
+    this.solicitudesService.getAllSolicitud()
+      .subscribe((data: any) => {
+        const {result} = data;
+        console.warn('result', result);
+
+        this.solicitudes = result;
+      });
+
+    // this.solicitudesService.getUserSolicitudPorId(1)
+    // .subscribe((data: any) => {
+    //   const {result} = data;
+    //   this.userSolicitud = result;
+    // });
 
   }
 

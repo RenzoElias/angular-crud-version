@@ -13,18 +13,18 @@
          fxLayoutGap="30px">
 
          <div fxFlex="50">
-             <h1>{{ solicitud.area }} <small> -  {{ solicitud.area_cargo }} </small> </h1>
+             <h1>{{ solicitud.usuarioActual.nombreArea }} <small> -  {{ solicitud.usuarioActual.nombreCargo }} </small> </h1>
              <mat-divider></mat-divider>
              <br>
-             <h2>Tipo de Solicitud: {{ solicitud.tipo }}</h2>
+             <h2>Tipo de Solicitud: {{ solicitud.id005TipoSolicitud.name }}</h2>
              <mat-divider></mat-divider>
              <mat-list>
                  <h3>Nombre:</h3>
-                 <mat-list-item> {{ solicitud.nombre }} </mat-list-item>
-                 <h3>Area Destino:</h3>
-                 <mat-list-item> {{ solicitud.area_destino }} </mat-list-item>
+                 <mat-list-item> {{ solicitud.usuarioActual.nombresCompletos }} </mat-list-item>
                  <h3>Cargo:</h3>
-                 <mat-list-item> {{ solicitud.area_cargo }} </mat-list-item>
+                 <mat-list-item> {{ solicitud.usuarioDestino.nombreArea }} </mat-list-item>
+                 <h3>Area Destino:</h3>
+                 <mat-list-item> {{ solicitud.usuarioDestino.nombreCargo }} </mat-list-item>
                  <h3>Descripcion de solicitud:</h3>
                  <mat-list-item> {{ solicitud.descripcion }} </mat-list-item>
              </mat-list>

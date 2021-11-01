@@ -1,6 +1,6 @@
 
 <h1>
-    {{ ( solicitud.id )? 'Editar' : 'Nueva' }}
+    Nueva
     Solicitud
 </h1>
 
@@ -9,58 +9,55 @@
      fxLayout.xs="column">
 
     <div fxFlex="60" fxLayout="column">
-
         <div fxLayout="row"
              fxLayout.xs="column"
              fxLayoutGap="20px">
             <mat-form-field fxFlex="100" fxLayout.xs="column" >
                 <mat-label>Area</mat-label>
-                <input matInput
-                       type="text"
-                       [(ngModel)]="solicitud.area"
-                       required>
+                <mat-select [(ngModel)]="sendCrearSolicitud.id003AreaSolicitante"
+                disabled
+                >
+                <mat-option
+                            [value]="userSolicitud.id003Area.idParam">
+                    {{ userSolicitud.id003Area.name }}
+                </mat-option>
+                </mat-select>
             </mat-form-field>
-
             <mat-form-field fxFlex="100">
                 <mat-label>Cargo</mat-label>
                 <input matInput
                        type="text"
-                       [(ngModel)]="solicitud.area_cargo"
-                       required>
+                       [(ngModel)]="userSolicitud.id002Cargo.name"
+                       disabled>
             </mat-form-field>
         </div>
-
-
         <mat-form-field>
             <mat-label>Nombre</mat-label>
-            <input matInput
-                   type="text"
-                   [(ngModel)]="solicitud.nombre"
-                   required>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Area Destino</mat-label>
-            <input matInput
-                   type="text"
-                   [(ngModel)]="solicitud.area_destino"
-                   required>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Tipo de Solicitud</mat-label>
-            <mat-select [(ngModel)]="solicitud.tipo"
-                        required>
-                <mat-option *ngFor="let tipo of tipos"
-                            [value]="tipo.id">
-                    {{ tipo.desc }}
-                </mat-option>
+            <mat-select [(ngModel)]="sendCrearSolicitud.idUsuarioSolicitante"
+            disabled
+            >
+            <mat-option
+                        [value]="userSolicitud.idPersona">
+                {{ userSolicitud.nombres }} {{' '}}
+                {{ userSolicitud.apePaterno }} {{' '}}
+                {{ userSolicitud.apeMaterno }}
+            </mat-option>
             </mat-select>
         </mat-form-field>
-
         <mat-form-field>
-            <mat-label>Tipo de SendSolicitud</mat-label>
-            <mat-select [(ngModel)]="sendSolicitud.tipo"
+            <mat-label>Area Destino</mat-label>
+            <mat-select [(ngModel)]="sendCrearSolicitud.idUsuarioSolicitante"
+            disabled
+            >
+            <mat-option
+                        [value]="userSolicitud.idPersona">
+                {{ 'COORDINADOR HELPDESK' }}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Tipo de Solicitud</mat-label>
+            <mat-select [(ngModel)]="sendCrearSolicitud.id005TipoSolicitud"
                         required>
                 <mat-option *ngFor="let reqTipoSolicitud of reqTipoSolicitudes"
                             [value]="reqTipoSolicitud.idParam">
@@ -69,11 +66,12 @@
             </mat-select>
         </mat-form-field>
 
+
         <mat-form-field>
             <mat-label>Descripcion de solicitud</mat-label>
             <textarea matInput
                    type="text"
-                   [(ngModel)]="solicitud.descripcion"
+                   [(ngModel)]="sendCrearSolicitud.descripcion"
                    required>
             </textarea>
         </mat-form-field>
@@ -86,25 +84,16 @@
                     color="primary"
                     (click)="guardar()">
                 <mat-icon>edit</mat-icon>
-                {{ ( solicitud.id )? 'Actualizar' : 'Crear' }}
+                Crear
             </button>
 
             <span class="spacer"></span>
-
-            <button *ngIf="solicitud.id"
-                    mat-raised-button
-                    (click)="borrarSolicitud()"
-                    color="warn">
-                <mat-icon>remove</mat-icon>
-                Borrar
-            </button>
         </div>
 
 
     </div>
 
     <div fxFlex="20">
-        <!-- <img [src]="solicitud | imagen"> -->
     </div>
 
 </div>
