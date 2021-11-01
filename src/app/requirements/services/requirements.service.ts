@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ResponseI } from '../interfaces/requirements.interface';
+import { ResponseI, SendCrearRequirement, SendEditarRequirement } from '../interfaces/requirements.interface';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -34,22 +34,18 @@ export class RequirementsService {
 
 
   // AGREGAR UNA SOLICITUD
-  // agregarRequirement( solicitud: Requirement ): Observable<Requirement> {
-  //   return this.http.post<Requirement>(`${ this.baseUrl }/api`, solicitud );
-  // }
+  agregarRequirement( requirement: SendCrearRequirement ): Observable<ResponseI> {
+    return this.http.post<ResponseI>(`${ this.baseUrl }/api`, requirement );
+  }
 
-  // // ACTUALIZAR
-  // actualizarRequirement( solicitud: Requirement ): Observable<Requirement> {
-  //   return this.http.put<Requirement>(`${ this.baseUrl }/api/${ solicitud.id }`, solicitud );
-  // }
+  // ACTUALIZAR
+  actualizarRequirement( requirement: SendEditarRequirement ): Observable<ResponseI> {
+    return this.http.put<ResponseI>(`${ this.baseUrl }/api/${ requirement.idUsuarioSolicitante }`, requirement );
+  }
 
   // BORRAR
   borrarRequirement( id: string ): Observable<any> {
     return this.http.delete<any>(`${ this.baseUrl }/api/${ id }`);
   }
-
-  // getSugerencias( termino: string ): Observable<Requirement[]> {
-  //   return this.http.get<Requirement[]>(`${ this.baseUrl }/api?q=${ termino }&_limit=6`);
-  // }
 
 }
