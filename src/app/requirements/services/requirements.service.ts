@@ -32,7 +32,6 @@ export class RequirementsService {
     return this.http.get<ResponseI>(`http://192.168.1.4:1991/api/solicitud/persona/obtenerPersona?idPersona=${ id }`);
   }
 
-
   // AGREGAR UNA SOLICITUD
   agregarRequirement( requirement: SendCrearRequirement ): Observable<ResponseI> {
     return this.http.post<ResponseI>(`${ this.baseUrl }/api`, requirement );
